@@ -12,7 +12,7 @@
 <body>
 
 <div style="margin-left: 350px">
-    <a class="btn w-M br-0 stl-3" href="#">Cargar Archivo</a>
+    <a class="btn w-M br-0 stl-3" href="leer-archivo.php">Leer Archivo</a>
     <a class="btn w-M br-0 stl-3" href="#">Historico</a>
 </div>
 </body>
