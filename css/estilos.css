@@ -31,10 +31,11 @@ stl-3
 **********/
 
 .stl-3 {
-    background-color: #72112d;
-    border: 1px solid #72112d;
+    background-color: #005e6e;
+    border: 1px solid #005e6e;
     color: white;
     transition-duration: .2s;
+    cursor: pointer;
 }
 .stl-3:hover{
     animation-name: tembleque;
@@ -173,4 +174,41 @@ ANIMACIONES
     text-align: left;
     color: dimgray;
     text-align-last: center;
+}
+
+.input-file-html5
+{
+    position: relative;
+    outline: none;
+    color: #005e6e;
+    background: whitesmoke;
+    padding: .3em 1em .3em 0;
+}
+
+.input-file-html5::before
+{
+    content:'seleccionar archivo';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .5em .7em;
+    color: white;
+    background: #005e6e;
+    box-shadow: 0 0.2em 0 #005e6e;
+    transform: translateY(-0.2em);
+}
+
+.input-file-html5:hover::before
+{
+    background: #005e6e;
+    box-shadow: 0 0.35em 0 #005e6e;
+    transform: translateY(-0.35em);
+}
+
+.input-file-html5:active::before
+{
+    background: #005e6e;
+    box-shadow: 0 0em 0 #005e6e;
+    transform: translateY(0em);
 }
