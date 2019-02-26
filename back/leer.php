@@ -43,5 +43,5 @@ try {
     echo "ademas de contar con " . $contadorLetras . " letras<br><br>";
     echo var_dump($letraspalabras);
 }catch (Exception $e){
-    echo "<script>alert('Algo ha pasado, verifica tu archivo'); window.location.href='../views/importar-horario.php'</script>";
+    echo "<script>alert('Algo ha pasado, verifica tu archivo'); window.location.href='../public/leer-archivo.php'</script>";
 }
