@@ -27,8 +27,8 @@ if (isset($_GET['palabras'])){
     $palabra = $_GET['palabras'];
     $palabra = unserialize($palabra);
     //$llaves = array_keys($palabraletras);
-    echo var_dump($palabra);
-    echo "<br><br>";
+    //echo var_dump($palabra);
+    //echo "<br><br>";
 }
 ?>
 <div style="margin-left: 350px">
@@ -37,12 +37,17 @@ if (isset($_GET['palabras'])){
         ?> palabras en el archivo</label><br>
     <label>Existen <?php
         echo $letras
-        ?> letras en el archivo</label><br>
+        ?> letras en el archivo</label><br><br>
     <label>Conteo por palabras <?php
         for ($i=1;$i<sizeof($llaves);$i++){
             $porcentaje = bcdiv(($palabraletras[$llaves[$i]]/$palabras)*100, '1', 2);
             echo "<br>" . $llaves[$i] . " " .  $palabraletras[$llaves[$i]] . " " . $porcentaje . "%<br>";
-
+            $palabrallave = $palabra[$llaves[$i]];
+            $palabrallaves = array_keys($palabrallave);
+            //echo var_dump($palabrallave) . " " . $palabrallaves[0];
+            for ($j=0;$j<sizeof($palabrallaves);$j++){
+                echo $palabrallaves[$j] . " " . $palabrallave[$palabrallaves[$j]] . "<br>";
+            }
         }
         //echo "<br><br><br>" . var_dump($palabraletras);
         ?></label>
