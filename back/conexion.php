@@ -2,7 +2,7 @@
 
 session_start();
 
-$con = mysqli_connect("localhost", "celmedia", "ninguna123.", "parcial");
+//$con = mysqli_connect("localhost", "celmedia", "ninguna123.", "parcial");
 
 
 /*if (!$con){
