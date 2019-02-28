@@ -152,7 +152,7 @@ if (isset($_GET['palabras'])){
         </div>
     </div>
     <div class="wrapper">
-        <div class="col_fourth">
+        <div class="col_fourth end">
             <div class="hover panel">
                 <div class="front">
                     <div class="box1">
