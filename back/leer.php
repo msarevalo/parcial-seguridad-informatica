@@ -23,7 +23,7 @@ try {
         foreach ($archivo as $ar => $archi) {
             //echo $achi . "<br>";
             $datos = explode(" ", $archi);
-            $datos = str_replace(array("\\", "¨", "º", "-", "~", "#", "@", "|", "!", "\"", "·", "$", "%", "&", "/", "(", ")", "?", "'", "¡", "¿", "[", "^", "<code>", "]", "+", "}", "{", "¨", "´", ">", "< ", ";", ",", ":", ".", "\n", "\r"),'', $datos);
+            $datos = str_replace(array("\\", "¨", "º", "-", "~", "#", "@", "|", "!", "\"", "·", "$", "%", "&", "/", "(", ")", "?", "'", "¡", "¿", "[", "^", "<code>", "]", "+", "}", "{", "¨", "´", ">", "< ", ";", ",", ":", ".", "\n", "\r", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"),'', $datos);
             for ($i = 0;$i < sizeof($datos);$i++) {
                 $datos[$i] = eliminar_tildes($datos[$i]);
                 $letras = strlen($datos[$i]);
@@ -56,6 +56,72 @@ try {
             }
         }
     }
+    header("Location: ../public/resultados.php?name=" . $nombrearchivo . "&gp=" . $contadorPalabras1 . "&gl=" . $contadorLetras1 ."&cp=" . $contadorPalabras . "&cl=" . $contadorLetras . "&pl=" . serialize($letraspalabras) . "&palabras=" . serialize($palabras));
+    ?>
+<!--<div>
+    <a href="leer-archivo.php"><img src="../img/return.png" width="35px"></a>
+    <?php
+    //name=" . $nombrearchivo . "&gp=" . $contadorPalabras1 . "&gl=" . $contadorLetras1 ."&cp=" . $contadorPalabras . "&cl=" . $contadorLetras . "&pl=" . serialize($letraspalabras) . "&palabras=" . serialize($palabras));
+    /*$nombre = $nombrearchivo;
+    $globalpalabras = $contadorPalabras1;
+    $globalletras = $contadorLetras1;
+    $palabras = $contadorPalabras;
+    $letras = $contadorLetras;
+    $palabraletras = $letraspalabras;
+    $llaves = array_keys($palabraletras);
+    $palabra = $palabras;
+    for ($i=1;$i<sizeof($llaves);$i++){
+        $porcentaje = bcdiv(($palabraletras[$llaves[1]] / $palabras) * 100, '1', 2);
+
+            ?>
+
+            <div class="wrapper">
+                <div class="col_fourth">
+                    <div class="hover panel">
+                        <div class="front">
+                            <div class="box1">
+                                <?php //echo $globalpalabras
+                                ?>
+                                <p>Palabras con:<br><?php
+                                    //for ($i=1;$i<sizeof($llaves);$i++){
+                                    $porcentaje = bcdiv(($palabraletras[$llaves[$i]] / $palabras) * 100, '1', 2);
+                                    echo " " . $llaves[$i] . " letras<br><br>Cantidad de palabras: " . $palabraletras[$llaves[$i]] . "<br><br>" . $porcentaje . "%<br>";
+                                    $palabrallave = $palabra[$llaves[$i]];
+                                    $palabrallaves = array_keys($palabrallave);
+                                    //echo var_dump($palabrallave) . " " . $palabrallaves[0];
+                                    //}
+                                    ?></p>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="box2">
+                                <p><?php
+                                    for ($j = 0; $j < sizeof($palabrallaves); $j++) {
+                                        echo $palabrallaves[$j] . " " . $palabrallave[$palabrallaves[$j]] . "<br><br>";
+                                    }
+                                    ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+
+    ?>
+    <script>
+        $(document).ready(function(){
+            // set up hover panels
+            // although this can be done without JavaScript, we've attached these events
+            // because it causes the hover to be triggered when the element is tapped on a touch device
+            $('.hover').hover(function(){
+                $(this).addClass('flip');
+            },function(){
+                $(this).removeClass('flip');
+            });
+        });
+    </script>
+<?php
     /*echo  "<br>el archivo contiene " . $contadorPalabras . " palabras<br>";
     echo "ademas de contar con " . $contadorLetras . " letras<br><br>";
     echo  "<br>el archivo contiene " . $contadorPalabras1 . " palabras<br>";
@@ -63,7 +129,7 @@ try {
     echo var_dump($letraspalabras);
     echo "<br><br>";
     echo var_dump($palabras);*/
-    header("Location: ../public/resultados.php?name=" . $nombrearchivo . "&gp=" . $contadorPalabras1 . "&gl=" . $contadorLetras1 ."&cp=" . $contadorPalabras . "&cl=" . $contadorLetras . "&pl=" . serialize($letraspalabras) . "&palabras=" . serialize($palabras));
+    //header("Location: ../public/resultados.php?name=" . $nombrearchivo . "&gp=" . $contadorPalabras1 . "&gl=" . $contadorLetras1 ."&cp=" . $contadorPalabras . "&cl=" . $contadorLetras . "&pl=" . serialize($letraspalabras) . "&palabras=" . serialize($palabras));
     //mysqli_query($con, "INSERT INTO `archivos` (`nombreArchivo`, `cantidadPalabras`, `CantidadLetras`, `conteoPalabras`) VALUES ('" . $archivotmp . "', '" . $contadorPalabras . "', '" . $contadorLetras . "', '" . $letraspalabras . "');");
 }catch (Exception $e){
     echo "<script>alert('Algo ha pasado, verifica tu archivo'); window.location.href='../public/leer-archivo.php'</script>";

@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../js/script.js" type="application/javascript"></script>
 </head>
-<body>
+<body onload="noVolver()">
 <?php
 include ('../back/conexion.php');
 
@@ -36,73 +36,37 @@ if (isset($_GET['pl'])){
 if (isset($_GET['palabras'])){
     $palabra = $_GET['palabras'];
     $palabra = unserialize($palabra);
+    if (!$palabra){
+        echo "<a href=\"leer-archivo.php\"><img src=\"../img/return.png\" width=\"35px\"></a>";
+        echo "<br><br><label>Lo sentimos no pudimos leer el archivo pues es muy largo</label>";
+        exit();
+    }
     //$llaves = array_keys($palabraletras);
     //echo var_dump($palabra);
     //echo "<br><br>";
 }
 ?>
-<div style="margin-left: 10px">
-    <!--<label>Existen <?php
-        /*echo $palabras
-        ?> palabras en el archivo</label><br>
-    <label>Existen <?php
-        echo $letras
-        ?> letras en el archivo</label><br><br>
-    <label>Conteo por palabras <?php
-        for ($i=1;$i<sizeof($llaves);$i++){
-            $porcentaje = bcdiv(($palabraletras[$llaves[$i]]/$palabras)*100, '1', 2);
-            echo "<br>" . $llaves[$i] . " " .  $palabraletras[$llaves[$i]] . " " . $porcentaje . "%<br>";
-            $palabrallave = $palabra[$llaves[$i]];
-            $palabrallaves = array_keys($palabrallave);
-            //echo var_dump($palabrallave) . " " . $palabrallaves[0];
-            for ($j=0;$j<sizeof($palabrallaves);$j++){
-                echo $palabrallaves[$j] . " " . $palabrallave[$palabrallaves[$j]] . "<br>";
-            }
-        }
-        //echo "<br><br><br>" . var_dump($palabraletras);*/
-        ?></label>-->
+<div>
+    <a href="leer-archivo.php"><img src="../img/return.png" width="35px"></a>
+    <?php
+
+    for ($i=1;$i<sizeof($llaves);$i++){
+        $porcentaje = bcdiv(($palabraletras[$llaves[1]] / $palabras) * 100, '1', 2);
+        if (!$i==sizeof($llaves)-1){
+    ?>
+
     <div class="wrapper">
         <div class="col_fourth">
             <div class="hover panel">
                 <div class="front">
                     <div class="box1">
-                        <!--<p>Totalidad de Palabras</p><br>
-                        <p><?php //echo $globalpalabras?></p>-->
-                        <p>Palabras con: <?php
-                        //for ($i=1;$i<sizeof($llaves);$i++){
-                            $porcentaje = bcdiv(($palabraletras[$llaves[1]]/$palabras)*100, '1', 2);
-                            echo " " . $llaves[1] . " letras<br><br>Cantidad de palabras: " .  $palabraletras[$llaves[1]] . "<br><br>" . $porcentaje . "%<br>";
-                            $palabrallave = $palabra[$llaves[1]];
-                            $palabrallaves = array_keys($palabrallave);
-                            //echo var_dump($palabrallave) . " " . $palabrallaves[0];
-                        //}
-                            ?></p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="box2">
-                        <p><?php
-                            for ($j=0;$j<sizeof($palabrallaves);$j++){
-                                echo $palabrallaves[$j] . " " . $palabrallave[$palabrallaves[$j]] . "<br>";
-                            }
-                            ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="wrapper">
-        <div class="col_fourth">
-            <div class="hover panel">
-                <div class="front">
-                    <div class="box1">
-                        <!--<p>Totalidad de Palabras</p><br>
-                        <p><?php //echo $globalpalabras?></p>-->
-                        <p>Palabras con: <?php
+                       <?php //echo $globalpalabras
+                        ?>
+                        <p>Palabras con:<br><?php
                             //for ($i=1;$i<sizeof($llaves);$i++){
-                            $porcentaje = bcdiv(($palabraletras[$llaves[2]]/$palabras)*100, '1', 2);
-                            echo " " . $llaves[2] . " letras<br><br>Cantidad de palabras: " .  $palabraletras[$llaves[2]] . "<br><br>" . $porcentaje . "%<br>";
-                            $palabrallave = $palabra[$llaves[2]];
+                            $porcentaje = bcdiv(($palabraletras[$llaves[$i]] / $palabras) * 100, '1', 2);
+                            echo " " . $llaves[$i] . " letras<br><br>Cantidad de palabras: " . $palabraletras[$llaves[$i]] . "<br><br>" . $porcentaje . "%<br>";
+                            $palabrallave = $palabra[$llaves[$i]];
                             $palabrallaves = array_keys($palabrallave);
                             //echo var_dump($palabrallave) . " " . $palabrallaves[0];
                             //}
@@ -112,8 +76,8 @@ if (isset($_GET['palabras'])){
                 <div class="back">
                     <div class="box2">
                         <p><?php
-                            for ($j=0;$j<sizeof($palabrallaves);$j++){
-                                echo $palabrallaves[$j] . " " . $palabrallave[$palabrallaves[$j]] . "<br>";
+                            for ($j = 0; $j < sizeof($palabrallaves); $j++) {
+                                echo $palabrallaves[$j] . " " . $palabrallave[$palabrallaves[$j]] . "<br><br>";
                             }
                             ?></p>
                     </div>
@@ -121,48 +85,21 @@ if (isset($_GET['palabras'])){
             </div>
         </div>
     </div>
-    <div class="wrapper">
-        <div class="col_fourth">
-            <div class="hover panel">
-                <div class="front">
-                    <div class="box1">
-                        <!--<p>Totalidad de Palabras</p><br>
-                        <p><?php //echo $globalpalabras?></p>-->
-                        <p>Palabras con: <?php
-                            //for ($i=1;$i<sizeof($llaves);$i++){
-                            $porcentaje = bcdiv(($palabraletras[$llaves[3]]/$palabras)*100, '1', 2);
-                            echo " " . $llaves[3] . " letras<br><br>Cantidad de palabras: " .  $palabraletras[$llaves[3]] . "<br><br>" . $porcentaje . "%<br>";
-                            $palabrallave = $palabra[$llaves[3]];
-                            $palabrallaves = array_keys($palabrallave);
-                            //echo var_dump($palabrallave) . " " . $palabrallaves[0];
-                            //}
-                            ?></p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="box2">
-                        <p><?php
-                            for ($j=0;$j<sizeof($palabrallaves);$j++){
-                                echo $palabrallaves[$j] . " " . $palabrallave[$palabrallaves[$j]] . "<br>";
-                            }
-                            ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+    }else{
+        ?>
     <div class="wrapper">
         <div class="col_fourth end">
             <div class="hover panel">
                 <div class="front">
                     <div class="box1">
-                        <!--<p>Totalidad de Palabras</p><br>
-                        <p><?php //echo $globalpalabras?></p>-->
-                        <p>Palabras con: <?php
+                        <?php //echo $globalpalabras
+                        ?>
+                        <p>Palabras con:<br><?php
                             //for ($i=1;$i<sizeof($llaves);$i++){
-                            $porcentaje = bcdiv(($palabraletras[$llaves[4]]/$palabras)*100, '1', 2);
-                            echo " " . $llaves[4] . " letras<br><br>Cantidad de palabras: " .  $palabraletras[$llaves[4]] . "<br><br>" . $porcentaje . "%<br>";
-                            $palabrallave = $palabra[$llaves[4]];
+                            $porcentaje = bcdiv(($palabraletras[$llaves[$i]] / $palabras) * 100, '1', 2);
+                            echo " " . $llaves[$i] . " letras<br><br>Cantidad de palabras: " . $palabraletras[$llaves[$i]] . "<br><br>" . $porcentaje . "%<br>";
+                            $palabrallave = $palabra[$llaves[$i]];
                             $palabrallaves = array_keys($palabrallave);
                             //echo var_dump($palabrallave) . " " . $palabrallaves[0];
                             //}
@@ -172,8 +109,11 @@ if (isset($_GET['palabras'])){
                 <div class="back">
                     <div class="box2">
                         <p><?php
-                            for ($j=0;$j<sizeof($palabrallaves);$j++){
-                                echo $palabrallaves[$j] . " " . $palabrallave[$palabrallaves[$j]] . "<br>";
+                            for ($j = 0; $j < sizeof($palabrallaves); $j++) {
+                                $por = (bcdiv(($palabrallave[$palabrallaves[$j]]/$palabraletras[$llaves[$i]])*100, '1', 2));
+                                $globalpor = (bcdiv(($palabrallave[$palabrallaves[$j]]/$globalpalabras)*100, '1', 2));
+                                echo "<strong style='color: #005e6e'>" . $palabrallaves[$j] . ":</strong><br>" . $palabrallave[$palabrallaves[$j]] . "/" . $palabraletras[$llaves[$i]] . " " . $por . "%<br>";
+                                echo $palabrallave[$palabrallaves[$j]] . "/" . $globalpalabras . " " . $globalpor . "%<br><br>";
                             }
                             ?></p>
                     </div>
@@ -181,7 +121,10 @@ if (isset($_GET['palabras'])){
             </div>
         </div>
     </div>
-
+    <?php
+        }
+    }
+    ?>
     <script>
         $(document).ready(function(){
             // set up hover panels

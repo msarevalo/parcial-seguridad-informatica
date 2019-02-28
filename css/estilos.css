@@ -301,9 +301,9 @@ ANIMACIONES
     -moz-transform: rotateX(0deg) rotateY(0deg);
 }
 .box1{
-    background-color: #14bcc8;
-    width: 200px;
-    height: 150px;
+    background-color: #005e6e;
+    width: 180px;
+    height: auto;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
@@ -312,7 +312,7 @@ ANIMACIONES
 }
 .box2{
     background-color: #ff7e70;
-    width: 200px;
+    width: 180px;
     height: auto;
     margin: 0 auto;
     padding: 20px;
@@ -328,5 +328,4 @@ body {
     font-family: Arial, Tahoma;
     font-size: 20px;
     color: #666666;
-    text-align: center;
 }

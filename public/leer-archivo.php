@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../js/scripts.js" type="application/javascript"></script>
 </head>
-<body>
+<body onload="noVolver()" style="text-align: center;">
 <?php
 include ('../back/conexion.php');
 ?>
