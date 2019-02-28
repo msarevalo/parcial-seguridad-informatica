@@ -47,7 +47,13 @@ if (isset($_GET['palabras'])){
 }
 ?>
 <div>
-    <a href="leer-archivo.php"><img src="../img/return.png" width="35px"></a>
+    <a href="leer-archivo.php"><img src="../img/return.png" width="35px"></a><br>
+    <div style="text-align: center; margin-top: -40px">
+        <label>El total de palabras del archivo es: <?php echo $globalpalabras?></label><br>
+        <label>El total de letras del archivo es: <?php echo $globalletras?></label><br><br>
+        <label>El total de palabras dentro del rango 1 a 4 letras es: <?php echo $palabras?></label><br>
+        <label>El total de letras dentro del rango 1 a 4 letras es: <?php echo $letras?></label><br><br>
+    </div>
     <?php
 
     for ($i=1;$i<sizeof($llaves);$i++){

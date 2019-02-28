@@ -28,7 +28,8 @@ try {
                 $datos[$i] = eliminar_tildes($datos[$i]);
                 $letras = strlen($datos[$i]);
                 //echo $i . " " . $datos[$i] . " " . $letras;
-                if ($letras <= 4) {
+                if ($letras <= 4 && $letras >= 1) {
+                    $contadorPalabras++;
                     if (isset($letraspalabras[$letras])) {
                         $letraspalabras[$letras] = $letraspalabras[$letras] + 1;
                         //$palabras[$letras][] = $datos[$i];
@@ -49,7 +50,7 @@ try {
                         //echo var_dump($letraspalabras) . "<br>";
                     }
                     $contadorLetras = $contadorLetras + $letras;
-                    $contadorPalabras++;
+
                 }
                 $contadorLetras1 = $contadorLetras1 + $letras;
                 $contadorPalabras1++;
