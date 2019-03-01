@@ -45,6 +45,8 @@ if (isset($_GET['palabras'])){
     //echo var_dump($palabra);
     //echo "<br><br>";
 }
+$maximapalabra = "";
+$cantmaxima = 0;
 ?>
 <div>
     <a href="leer-archivo.php"><img src="../img/return.png" width="35px"></a><br>
@@ -117,9 +119,18 @@ if (isset($_GET['palabras'])){
                         <p><?php
                             for ($j = 0; $j < sizeof($palabrallaves); $j++) {
                                 $por = (bcdiv(($palabrallave[$palabrallaves[$j]]/$palabraletras[$llaves[$i]])*100, '1', 2));
-                                $globalpor = (bcdiv(($palabrallave[$palabrallaves[$j]]/$globalpalabras)*100, '1', 2));
+                                $globalpor = (bcdiv(($palabrallave[$palabrallaves[$j]]/$palabras)*100, '1', 2));
                                 echo "<strong style='color: #005e6e'>" . $palabrallaves[$j] . ":</strong><br>" . $palabrallave[$palabrallaves[$j]] . "/" . $palabraletras[$llaves[$i]] . " " . $por . "%<br>";
-                                echo $palabrallave[$palabrallaves[$j]] . "/" . $globalpalabras . " " . $globalpor . "%<br><br>";
+                                echo $palabrallave[$palabrallaves[$j]] . "/" . $palabras . " " . $globalpor . "%<br><br>";
+                                if (empty($maximapalabra)) {
+                                    $maximapalabra = $palabrallaves[$j];
+                                    $cantmaxima = $palabrallave[$palabrallaves[$j]];
+                                }else{
+                                    if ($cantmaxima<$palabrallave[$palabrallaves[$j]]){
+                                        $maximapalabra = $palabrallaves[$j];
+                                        $cantmaxima = $palabrallave[$palabrallaves[$j]];
+                                    }
+                                }
                             }
                             ?></p>
                     </div>
@@ -127,6 +138,7 @@ if (isset($_GET['palabras'])){
             </div>
         </div>
     </div>
+
     <?php
         }
     }
@@ -143,6 +155,9 @@ if (isset($_GET['palabras'])){
             });
         });
     </script>
+</div>
+<div style="margin-top: 300px; text-align: center">
+    <label>La palabra que mas se repite es: <strong><?php echo $maximapalabra?></strong><br>con <?php echo $cantmaxima?> repeticiones</label>
 </div>
 </body>
 </html>
